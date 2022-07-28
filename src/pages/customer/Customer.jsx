@@ -1,7 +1,26 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Customer() {
+
+const Customer = () => {
+
+  const navigate = useNavigate();
+
+  const logoutFn = () => {
+    localStorage.clear();
+    navigate('/login');
+  }
+
   return (
-    <div>Customer</div>
+    <div>
+      <h1 className='container'>
+        CUSTOMER PAGE
+      </h1>
+
+      <button className='btn btn-primary' onClick={logoutFn}>Logout</button>
+    </div>
   )
 }
+
+
+export default Customer; 

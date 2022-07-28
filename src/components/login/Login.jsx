@@ -47,7 +47,7 @@ const Login = props => {
                             <a href='#' onClick={goToSignup}>SIGN-UP</a>
                         </div>
                         <div className='errpr-msg text-danger'>{errorMessageLogin}</div>
-                        <div className='errpr-msg text-danger'>{loginMessage}</div>
+                        <div className='errpr-msg text-success'>{loginMessage}</div>
                     </form>
 
                 </div>

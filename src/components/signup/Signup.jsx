@@ -15,7 +15,7 @@ const Signup= props => {
 
     const handleSubmit =e =>{
         //1. create the data object
-        const data = {userId, password,username, email, userType}
+        const data = {userId, password,name:username, email, userType}
         //2.call onLoginSubmit with data
         onSignupSubmit(data);
         //3.prevent defeault to prevent submit
