@@ -40,7 +40,7 @@ const Login = props => {
                                 }} required />
                         </div>
                         <div className='input-group'>
-                            <input className='form-control m-1' type="submit" value='log-in' />
+                            <input className='form-control m-1 btn btn-danger' type="submit" value='log-in' />
                         </div>
                         <div>
                             Don't have an account? 

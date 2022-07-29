@@ -14,7 +14,7 @@ function Admin() {
   return (
     <div>
       <h1>Admin</h1>
-      <button className='btn btn-primary' omClick={logoutFn}>Logout</button>
+      <button className='btn btn-primary' onClick={logoutFn}>Logout</button>
     </div>
 
   )

@@ -1,3 +1,12 @@
 .logo-style{
     text-decoration:none;
 }
+
+.searchBar{
+    width: 400px;
+    height: 38px;
+}
+
+.search-btn{
+    height:38px;
+}

@@ -83,7 +83,7 @@ const Signup= props => {
                         </DropdownButton>    
                     </div>
                     <div className='input-group'>
-                        <input className='form-control m-1' type="submit" value='signup' />
+                        <input className='form-control m-1 btn btn-danger' type="submit" value='signup' />
                     </div>
                     <div>
                         Have an account? 

@@ -6,9 +6,8 @@ const ImageCarousel= props => {
 
   return (
     <div className='shadow-lg'>
-        {/* <h1>carousel</h1> */}
+        
         <CCarousel controls >
-                {/* <h1>i am carousel</h1> */}
             {images.map((image, index)=>{
                 return(
                     <CCarouselItem>
