@@ -7,7 +7,7 @@ import "./header.css";
 const Header = (props) =>{
 
 
-    const{filtermoviesBySearch} = props;
+    const{filtermoviesBySearch, hideSearch} = props;
     const navigate = useNavigate() ;
     const [searchText, setSearchText] =useState('');
 
@@ -25,6 +25,8 @@ const Header = (props) =>{
         filtermoviesBySearch(searchText)
     }
 
+
+
     const isUserLoggedIn = localStorage.getItem('accessToken');
 
 
@@ -40,6 +42,8 @@ const Header = (props) =>{
                             SHOW TIME
                             </a>
                      </div>
+                     {!hideSearch && (
+        
                      <form  onSubmit={searchFn}>
                         <input 
                             className='searchBar'
@@ -58,6 +62,7 @@ const Header = (props) =>{
                         Search
                      </CButton>
                      </form>
+                    )}
                      {
                         isUserLoggedIn ?(
                      <CButton 
