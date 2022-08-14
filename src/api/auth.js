@@ -3,12 +3,16 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 /* 
+
+
 CRUD         REST
 -----------------------
 CREATE	|  POST/PUT
 READ	|  GET
 UPDATE	|  PUT/POST/PATCH
 DELETE	|  DELETE
+
+
 */
 //login
 export const userSignin = async data => {

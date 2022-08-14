@@ -5,12 +5,12 @@ import  Delete  from '@material-ui/icons/Delete';
 import  Edit  from '@material-ui/icons/Edit';
 // import  Add from '@material-ui/icons/Add';
 import { ExportCsv, ExportPdf } from '@material-table/exporters';
+import TheatreEditModal from '../theatre-edit-modal/TheatreEditModal';
 // import { warning } from 'react-router/lib/router';
-import {Modal} from 'react-bootstrap';
 
 
 const TheatreList = () => {
-
+  
     const [theatreList, setTheatreList] = useState([]);
     const [showEditModal, setShowEditModal] = useState(false);
     const [selectedTheatre, setSelectedTheatre] = useState({});
@@ -77,6 +77,7 @@ const TheatreList = () => {
                     const{status , message} = res;
                     if(status === 200){
                         setSelectedTheatre({});
+                        setErrorMessage("");
                         setShowEditModal(false);
                         fetchTheatres();
                     }else if(message){
@@ -128,11 +129,11 @@ const TheatreList = () => {
                     tooltip:'Edit Theatre',
                     onClick: (event, rowData) => editTheater(rowData),
                 },
-                {
+ /*                {
                     icon:Delete,
                     tooltip:'Delete Theatre',
                     onClick: (event, rowData) =>deleteTheatre(rowData),
-                }
+                } */
             ]}
             options={{
                 actionsColumnIndex:-1,
@@ -141,12 +142,12 @@ const TheatreList = () => {
                 exportMenu:[  {
                         label:'Export PDF',
                         exportFunc:(cols, datas)=>
-                        ExportPdf(cols, datas, "TheaterReacorss"),
+                        ExportPdf(cols, datas, "Theater Records"),
                     },
                       {
                         label:'Export CSV',
                         exportFunc:(cols, datas)=>
-                        ExportCsv(cols, datas, "TheaterReacorss"),
+                        ExportCsv(cols, datas, "Theater Records"),
                     },
                 ],
                 headerStyle:{
@@ -161,79 +162,15 @@ const TheatreList = () => {
         />
 
        {showEditModal && 
-        <Modal
-            show ={ showEditModal}
-            onHide={() => {
-                setShowEditModal(false);
-            }}
-            backdrop={false}
-            centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>
-                        EDIT THEATRE
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <form onSubmit={handleEditTheatreSubmit}>                    <div>
-                        <h4>Theatre Id :{selectedTheatre._id}</h4>
-                    </div>
-                    <hr/>
-                    <div>
-                        <label>
-                            Theatre Name:
-                            <input type ="text"
-                            name='name'
-                             value={selectedTheatre.name}
-                             onChange={handleTicketsChange}/>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            City:
-                            <input type ="text" 
-                            name  ='city'
-                            onChange={handleTicketsChange}
-                            value={selectedTheatre.city}/>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Pincode:
-                            <input type ="text"
-                                name='pinCode'
-                            value={selectedTheatre.pinCode}
-                            onChange={handleTicketsChange}/>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Description:
-                            <textarea
-                            name='description'
-                            onChange={handleTicketsChange}>
-                            
-                           {selectedTheatre.description}
-                            </textarea>
-                        </label>
-                    </div>
-                    <div>
-                        <button type='button' className='btn btn-secondary' 
-                                onClick={()=>setShowEditModal(false)}>
-                            Cancel
-                        </button>
-                    </div>
-                    <div>
-                        <button type='submit' className='btn btn-primary'>
-                            Update
-                        </button>
-                    </div>
-                    </form>
-
-                    {errorMessage && (
-                        <div className=' text-danger'>{errorMessage}</div>
-                    )}
-                </Modal.Body>
-        </Modal>
+            <TheatreEditModal
+            selectedTheatre = {selectedTheatre}
+            setErrorMessage = {setErrorMessage}
+            showEditModal= {showEditModal}
+            setShowEditModal = {setShowEditModal}
+            handleEditTheatreSubmit={handleEditTheatreSubmit}
+            errorMessage={errorMessage}
+            handleTicketsChange={handleTicketsChange}
+            />
 
             
        }

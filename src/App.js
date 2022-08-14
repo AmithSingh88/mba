@@ -9,6 +9,7 @@ import Customer from './pages/customer/Customer';
 import Admin from './pages/admin/Admin';
 import Client from './pages/client/Client';
 import Home from './pages/home/Home';
+import MovieDetail from './pages/movieDetails/MovieDetails';
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
         <Route path='/customer' element={<Customer />} />
         <Route path='/client' element={<Client />} />
         <Route path='/admin' element={<Admin />} />
+        <Route
+          path='/movie-detail/:movieId'
+          element={<MovieDetail />}
+        />
       </Routes>
 
     </div>
