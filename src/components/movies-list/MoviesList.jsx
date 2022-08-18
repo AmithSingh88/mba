@@ -5,7 +5,7 @@ import  Delete  from '@material-ui/icons/Delete';
 import  Edit  from '@material-ui/icons/Edit';
 // import  Add from '@material-ui/icons/Add';
 import { ExportCsv, ExportPdf } from '@material-table/exporters';
-import { getAllMovies,getMovieDetails, removeMovie } from '../../api/movies';
+import { getAllMovies,updateMovieDetails, removeMovie } from '../../api/movies';
 import { Modal } from 'react-bootstrap';
 
 const MoviesList= () =>{
@@ -57,7 +57,7 @@ const MoviesList= () =>{
   }
 
   const handleEditMovieSubmit = (e) => {
-    getMovieDetails(selectedMovie._id, selectedMovie)
+    updateMovieDetails(selectedMovie._id, selectedMovie)
       .then(res => {
         const {data, status} = res;
 

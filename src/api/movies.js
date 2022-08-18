@@ -7,8 +7,12 @@ export const getAllMovies = async () => {
     return await axios.get(postUrl);
 }
 
+export const getMovieDetail = async (movieId) => {
+    const url = `${BASE_URL}/mba/api/v1/movies/${movieId}`;
+    return await axios.get(url);
+}
 
-export const getMovieDetails = async (movieId, movie) => {
+export const updateMovieDetails = async (movieId, movie) => {
     const url = `${BASE_URL}/mba/api/v1/movies/${movieId}`;
     return await axios.put(url, movie, {
         headers: {
