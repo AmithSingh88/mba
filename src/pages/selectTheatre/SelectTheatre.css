@@ -1,0 +1,30 @@
+.movieTag{
+    padding: 10px;
+    margin: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: azure;
+}
+
+.description{
+    background-color: #8080f7;
+}
+
+
+.language{
+    background-color: #df7538;
+}
+
+.releaseStatus{
+    background-color: green;
+}
+
+.theatre-item{
+    
+    border-bottom: 1px solid #ccc;
+}
+
+.text{
+    text-decoration: none;
+
+}

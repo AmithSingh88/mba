@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import { getMovieDetail } from '../../api/movies';
 import ReactPlayer from 'react-player';
 import Header from '../../components/header/Header';
@@ -32,13 +32,32 @@ const MovieDetail = () => {
         });
   };
   
+  const {trailerUrl = "",
+          posterUrl="",
+          name ="",
+          description="",
+          director="",
+          releaseDate="",
+          casts=[],
+          _id = "",
+          releaseStatus,
+        } = movieDetail;
+
+  const buttonText =
+        releaseStatus === "RELEASED" ? "BOOK TICKETS" : "COMIN SOON";
   
+
+  const buttonUrl = 
+        releaseStatus === "RELEASED" ? `/buyTickets/${name}/${_id}`: "#"; 
+
+
+
   return (
     <div  className='movie-detail'>
         <Header/>
               <div className="videoPlayer  d-flex justify-content-center">
                   <ReactPlayer
-                    url={"https://youtu.be/AgS_6UbQ8JM"}
+                    url={trailerUrl}
                     controls
                     className='videop'
                     width='70%'
@@ -52,22 +71,35 @@ const MovieDetail = () => {
                   <div className="row">
                     <div className="col">
                         <img
-                          src='https://images.news18.com/ibnlive/uploads/2022/06/anuritta-jha-1.jpg'
+                          src={posterUrl}
                           className='movie-poster'
                           alt='movie-poster'
-                          width= '50%'
+                          width= '45%'
                         />
                     </div>
                     <div className="col">
-                        <h2>Brahmastra</h2>
-                        <h2>Lorem ipsum dolor sit.</h2>
-                        <h2>Release Date</h2>
+                        <h2>{name}</h2>
+                        <hr/>
+                        <h2>{description}</h2>
+                        <h2>Release Date : {releaseDate}</h2>
+                        <h2>Director : {director}</h2>
+                        <hr/>
+                        <h2>Cast :</h2>{casts.map(cast => {
+                            return<h4>{cast}</h4>
+                        })}
+
+                        <hr/>
+
+                        <Link 
+                          className='btn btn-danger'
+                          to={buttonUrl}>
+                              {buttonText}
+                        </Link>
                     </div>
                   </div>
                 </div>
               </div>
-  
-
+             
         <Footer />
     </div>
   )
